@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
-
+import tkinter
 
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
@@ -14,7 +16,7 @@ from sklearn.svm import SVC
 # from sklearn.tree import DecisionTreeClassifier
 
 
-# from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix
 
 
 # Descrição do DataSet
