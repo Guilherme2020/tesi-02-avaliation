@@ -102,3 +102,13 @@ max_sodio = df.sodio.max()
 # print(media_sodio)
 # print(max_sodio)
 
+
+#sns.set(style="whitegrid", font_scale=1.8)
+plt.subplots(figsize = (15,8))
+#df = pd.read_csv('glass_data.csv')
+# ax = plt.plot(df['tipo'])
+sns.countplot(x="tipo", data=df)
+# .set_title('Count of Glass Types')
+
+grouBy = df.groupby('tipo',as_index=False).mean()
+grouBy
