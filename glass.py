@@ -1,22 +1,29 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[18]:
+
+
 import pandas as pd
 import numpy as np
-import matplotlib
-matplotlib.use('agg')
 import matplotlib.pyplot as plt
-import tkinter
+import seaborn as sns
+sns.set(style="whitegrid")
+import matplotlib.pyplot as plt
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.ensemble import RandomForestClassifier
-
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
-
-# from sklearn.naive_bayes import GaussianNB
-# from sklearn.tree import DecisionTreeClassifier
-
-
 from sklearn.metrics import confusion_matrix
+
+
+# In[ ]:
+
 
 
 # Descrição do DataSet
@@ -68,14 +75,19 @@ Class Distribution: (out of 214 total instances)
 #10 - Ferro
 #11 - Tipo
 
+
+# In[19]:
+
+
 df = pd.read_csv('glass_data.csv')
 
 df.columns = ["id", "indice_refrativo", "sodio", 'Magnesio', "Aluminio",
               "Silicone", "Potasion", "Calcio", "Barium", "Ferro", "tipo"]
 
 #
-df['tipo'] = df['tipo'].apply(lambda x: (0, 1)[x <= 4])
+#df['tipo'] = df['tipo'].apply(lambda x: (0, 1)[x <= 4])
 
+#df_tipo = df['tipo']
 # Campos nulos: Nenhum
 # nulos = df.isna().sum()
 # print("Campos nulos: ",nulos)
@@ -103,12 +115,24 @@ max_sodio = df.sodio.max()
 # print(max_sodio)
 
 
+# In[20]:
+
+
 #sns.set(style="whitegrid", font_scale=1.8)
 plt.subplots(figsize = (15,8))
 #df = pd.read_csv('glass_data.csv')
 # ax = plt.plot(df['tipo'])
-sns.countplot(x="tipo", data=df)
-# .set_title('Count of Glass Types')
+sns.countplot(x="tipo", data=df).set_title('Count of Glass Types')
+
+
+# In[75]:
+
 
 grouBy = df.groupby('tipo',as_index=False).mean()
+
+
+# In[76]:
+
+
 grouBy
+
